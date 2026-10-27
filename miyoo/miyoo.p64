@@ -352,7 +352,7 @@ def_faction{
   {id="pod",name="Pod Ship",class="Heavy",ups=4,pts=75,mv=4,cr=6,rng=6,att=4,str=0,eva=2,tou=2},
   {id="coral",name="Coral Ship",class="Medium",ups=3,pts=55,mv=6,cr=9,rng=24,att=1,str=1,eva=3,tou=3},
   {id="school",name="School Ship",class="Medium",ups=3,pts=55,mv=6,cr=9,rng=6,att=3,str=0,eva=3,tou=3},
-  {id="silt",name="Silt Ship",class="Light",ups=2,pts=35,mv=8,cr=12,rng=18,att=1,str=1,eva=4,tou=4},
+  {id="silt",name="Silt Ship",class="Light",ups=2,pts=35,mv=8,cr=12,rng=18,att=1,str=0,eva=4,tou=4},
   {id="shoal",name="Shoal Ship",class="Light",ups=1,pts=30,mv=10,cr=15,rng=0,att=0,str=0,eva=4,tou=4,
    rules={missile_ship=true},
    special="Missile Ship: once per activation, when not using a cruise/ram action, place 2 Smart Missile Squadrons fully within 2\" of this ship."},
@@ -510,7 +510,7 @@ def_faction{
   {id="anvil",name="Anvil Ship",class="Heavy",ups=4,pts=80,mv=2,cr=3,rng=24,att=2,str=2,eva=2,tou=2,
    rules={hardened=true},special=HARDENED},
   {id="cargo",name="Cargo Ship",class="Heavy",ups=4,pts=60,mv=2,cr=3,rng=18,att=2,str=2,eva=2,tou=3},
-  {id="kiln",name="Kiln Ship",class="Medium",ups=3,pts=60,mv=4,cr=6,rng=18,att=2,str=2,eva=3,tou=3,
+  {id="kiln",name="Kiln Ship",class="Medium",ups=3,pts=60,mv=4,cr=6,rng=18,att=2,str=1,eva=3,tou=3,
    rules={hardened=true},special=HARDENED},
   {id="loom",name="Loom Ship",class="Medium",ups=3,pts=60,mv=4,cr=6,rng=18,att=2,str=1,eva=3,tou=2},
   {id="lathe",name="Lathe Ship",class="Light",ups=2,pts=40,mv=6,cr=9,rng=12,att=2,str=0,eva=4,tou=4,
@@ -566,7 +566,8 @@ def_faction{
   {id="brawlers_delight",name="Brawlers Delight",weapon=true,rng=12,att=4,str=0,rules={brawlers=true},desc="No special rules."},
   {id="flechette_cannon",name="Flechette Cannon",weapon=true,rng=24,att=2,str=0,rules={blast=true},desc="No special rules."},
   {id="forge_beam",name="Forge Beam",weapon=true,rng=12,att=4,str=1,rules={overheat=true},desc="No special rules."},
-  {id="gyro_accelerator",name="Gyro-Accelerator",weapon=true,rng=24,att=1,str=0,rules={gyro=true},desc="No special rules."},
+  {id="gyro_accelerator",name="Gyro-Accelerator",weapon=true,rng=24,att=1,str=0,rules={gyro=true},
+   desc="Gyro-Accelerator: gets +3 strength and Deadly when targeting enemies over 12\" away."},
   {id="indolence_rifle",name="Indolence Rifle",weapon=true,rng=6,att=3,str=1,rules={indolence=true},desc="No special rules."},
   {id="possessive_eye",name="Possessive Eye",weapon=true,rng=12,att=3,str=1,rules={eye=true},desc="No special rules."},
   {id="rapid_fire_gun",name="Rapid-Fire Gun",weapon=true,rng=6,att=3,str=0,rules={twin=true,anti_sq=true},desc="No special rules."},
@@ -731,7 +732,7 @@ def_faction{
 --[[pod_format="raw",created="2026-10-26 15:00:00",modified="2026-10-26 15:00:00",revision=0]]
 -- GFWF - High Elf Fleets v2.0
 
-local DRIFT="Drift: when taking move actions, may instead move sideways up to its move speed, then pivot to face any direction."
+local DRIFT="Drift: when taking move actions, may instead move sideways up to its move speed, then pivot to face any solar wind marker."
 
 def_faction{
  id="high_elf_fleets",name="High Elf Fleets",
@@ -775,7 +776,7 @@ def_faction{
  keywords={
   {id="destructor",name="Destructor",desc="This weapon deals +2 damage per unblocked hit. If you roll a 1 to hit, then this ship takes 2 damage."},
   {id="distortion_lance",name="Distortion Lance",desc="If this weapon inflicts damage, push the target 3\" in any direction."},
-  {id="drift",name="Drift",desc="When taking move actions, this ship may make a drift move instead of moving normally. First, move the ship sideways by up to its move speed, then pivot it to face any direction."},
+  {id="drift",name="Drift",desc="When taking move actions, this ship may make a drift move instead of moving normally. First, move the ship sideways by up to its move speed, then pivot it to face any solar wind marker."},
   {id="false_sun",name="False Sun Keeper",desc="At the start of each round, you may unleash the false sun, and this ship counts as the only solar wind marker on the battlefield until the end of the round."},
   {id="gravity_hook",name="Gravity Hook",desc="Pivot the target by up to 45 degrees per damage from this weapon."},
   {id="shard6",name="Shard Cannons",desc="Unmodified hits of 6 get +2 Str."},
@@ -1060,7 +1061,7 @@ def_faction{
   {id="killer",name="Killer Ship",class="Heavy",ups=4,pts=75,mv=4,cr=6,rng=24,att=2,str=2,eva=2,tou=2,rules={orc_crew=true},special=ORC},
   {id="crusher",name="Crusher Ship",class="Medium",ups=3,pts=50,mv=6,cr=9,rng=12,att=2,str=1,eva=4,tou=3,rules={orc_crew=true},special=ORC},
   {id="goblin_hab",name="Goblin Hab Ship",class="Medium",ups=3,pts=50,mv=6,cr=9,rng=18,att=3,str=1,eva=4,tou=3,rules={goblin_crew=true},special=GOBLIN},
-  {id="chopper",name="Chopper Ship",class="Light",ups=2,pts=30,mv=8,cr=12,rng=6,att=2,str=0,eva=5,tou=5,rules={orc_crew=true},special=ORC},
+  {id="chopper",name="Chopper Ship",class="Light",ups=2,pts=30,mv=8,cr=12,rng=6,att=2,str=0,eva=5,tou=4,rules={orc_crew=true},special=ORC},
   {id="goblin_cutter",name="Goblin Cutter Ship",class="Light",ups=2,pts=30,mv=10,cr=15,rng=18,att=1,str=0,eva=4,tou=5,rules={goblin_crew=true},special=GOBLIN},
   {id="turbo",name="Turbo Squadron",class="Squadron",ups=0,pts=10,mv=12,cr=18,rng=2,att=2,str=0,eva=5,tou=6},
   {id="suicide",name="Suicide Squadron",class="Squadron",ups=0,pts=10,mv=10,cr=15,rng=2,att=2,str=0,eva=5,tou=5,
@@ -2341,16 +2342,90 @@ function rift_master(m)
  end
 end
 
--- Drift: slide sideways up to the move distance, then face any direction
+-- Drift: slide sideways up to the move distance, then face the solar wind
+-- marker nearest the mouse (with no marker the ship keeps its heading)
 function plan_drift(m,D,p)
  local side=m.h+0.25
  local s=(p.x-m.x)*cos(side)+(p.y-m.y)*dsin(side)
  s=mid(-D,s,D)
  local a=s>=0 and side or side+0.5
  local res=simulate_dir(m,a,abs(s))
- res.h=ang(p.x-res.x,p.y-res.y)
- if abs(p.x-res.x)+abs(p.y-res.y)<0.5 then res.h=m.h end
+ local w=nearest(p.x,p.y,solar_winds(m))
+ res.h=w and ang(w.x-res.x,w.y-res.y) or m.h
  return res
+end
+
+-- solar wind markers a drifting ship may face: an unleashed False Sun
+-- outshines all of them for the round
+function solar_winds(m)
+ local out={}
+ for s in all(bt.suns) do
+  if s~=m and s.state=="table" then add(out,s) end
+ end
+ if #(bt.suns)>0 then return out end
+ return bt.winds
+end
+
+-- Wind Reader: snap a point to the nearest table edge; it's valid inside
+-- the enemy deployment zone
+function wind_spot(side,p)
+ local x,y=mid(0.5,p.x,TABLE_W-0.5),mid(0.5,p.y,TABLE_H-0.5)
+ local d=min(min(p.x,TABLE_W-p.x),min(p.y,TABLE_H-p.y))
+ if d==p.x then x=0.5 elseif d==TABLE_W-p.x then x=TABLE_W-0.5
+ elseif d==p.y then y=0.5 else y=TABLE_H-0.5 end
+ if zone_sd(other(side),x,y)<=0 then return {x=x,y=y,side=side} end
+end
+
+function wind_reader_deploy()
+ for m in all(on_table()) do
+  if m.hero=="wind_reader" then
+   local spot
+   if m.side=="p" then
+    local r=await{
+     prompt="Wind Reader: click the rear edge of the enemy deployment zone to place a solar wind marker.",
+     hover=function(p) local w=wind_spot("p",p) return {mine=w or p,ok=w~=nil} end,
+     click=function(p) return wind_spot("p",p) end,
+    }
+    spot=r.click
+   else
+    -- the AI puts it in the middle of the player's back edge
+    local list={}
+    for i=0,TABLE_W do
+     for e in all({{x=i,y=0},{x=i,y=TABLE_H}}) do local w=wind_spot("ai",e) if w then add(list,w) end end
+    end
+    for j=0,TABLE_H do
+     for e in all({{x=0,y=j},{x=TABLE_W,y=j}}) do local w=wind_spot("ai",e) if w then add(list,w) end end
+    end
+    local z=bt.zinfo.p
+    spot=nearest(z.cx,z.cy,list)
+   end
+   if spot then
+    add(bt.winds,spot)
+    blog(m.name.." places a solar wind marker (Wind Reader)",SIDE_COL[m.side])
+   end
+  end
+ end
+end
+
+-- False Sun Keeper: at the start of each round the ship may become the
+-- only solar wind marker until the round ends
+function false_sun()
+ bt.suns={}
+ for m in all(on_table()) do
+  if m.hull.rules.false_sun then
+   local go
+   if m.side=="p" then
+    go=choose_option("False Sun Keeper: unleash the false sun from "..m.name.." this round?",{{true,"Unleash"},{false,"No"}})
+   else
+    -- the AI doesn't drift, so it only uses it to deny the player's markers
+    for o in all(on_table("p")) do if o.hull.rules.drift then go=true end end
+   end
+   if go then
+    add(bt.suns,m)
+    blog(m.name.." unleashes the false sun!",SIDE_COL[m.side])
+   end
+  end
+ end
 end
 
 -- straight move in a given direction (for drift and sidesteps)
@@ -2782,7 +2857,7 @@ end
 -- style: index into DEPLOY_STYLES, or nil to roll one
 function bt_start(pf,af,challenge,style)
  bt={
-  models={},objs={},mines={},spores={},rifts={},traps={},warps={},losses={},flashes={},booms={},logs={},terrain={},stars={},
+  models={},objs={},mines={},spores={},rifts={},traps={},warps={},winds={},suns={},losses={},flashes={},booms={},logs={},terrain={},stars={},
   round=0,phase=0,challenge=challenge,ai_hit_bonus=0,ai_tou_bonus=0,
   last_mb=0,tip_t=0,ai_name=af.name.." ("..faction_of(af).name..")",
   style=DEPLOY_STYLES[style] or pick(DEPLOY_STYLES),
@@ -2876,6 +2951,7 @@ function bt_flow()
  end
  formation_redeploy()
  tactician_redeploy()
+ wind_reader_deploy()
 
  bt.start_ships={p=morale_ships("p"),ai=morale_ships("ai")}
  for round=1,4 do
@@ -3206,6 +3282,7 @@ function start_round()
    end
   end
  end
+ false_sun()
 end
 
 function reserve_ok(m,x,y)
@@ -3461,21 +3538,6 @@ function player_activate(m,can_back)
    if has(m,"defense_claw") and not used.claw and #enemy_squadrons_within(m,2)>0 then add(btns,{"claw","Defense Claw"}) end
    if has(m,"event_horizon") and not used.horizon and #ships_within(m,12)>0 then add(btns,{"horizon","Event Horizon"}) end
    if has(m,"wrath_spines") and not used.wrath then add(btns,{"wrath","Wrath Spines"}) end
-   if has(m,"teleporter_pods") and not used.pods and #enemy_ships_within(m,6)>0 then add(btns,{"pods","Teleporter Pods"}) end
-   if has(m,"overcharged_thrusters") and not used.overcharge then add(btns,{"overcharge","Over-charge thrusters"}) end
-   if has(m,"grav_trap_launcher") and not used.gravtrap then add(btns,{"gravtrap","Grav-Trap Launcher"}) end
-   if has(m,"tether_emitter") and not used.tether and #enemy_ships_within(m,8)>0 then add(btns,{"tether","Tether Emitter"}) end
-   if has(m,"treachery_relay") and not used.treachery and #enemy_squadrons_within(m,6)>0 then add(btns,{"treachery","Treachery Relay"}) end
-   if has(m,"hidden_hangar") and not used.hangar and working_ups(m)>1 and #friendly_squadrons_within(m,99)>0 then add(btns,{"hangar","Hidden Hangar"}) end
-   if has(m,"lock_tether") and not used.locktether and #squadrons_near(m,12)>0 then add(btns,{"locktether","Lock Tether"}) end
-   if has(m,"sabotage_cells") and not used.sabotage and #carriers_within(m,12)>0 then add(btns,{"sabotage","Sabotage Cells"}) end
-   if m.hero=="handler" and not m.handled and #enemy_squadrons_within(m,12)>0 then add(btns,{"handler","Handler: steal a squadron"}) end
-   if has(m,"gravity_shunt") and not used.gshunt and #ships_within(m,8)>0 then add(btns,{"gshunt","Gravity Shunt"}) end
-   if m.hero=="divine_frog" and not used.frog then add(btns,{"frog","Divine Frog: spawn"}) end
-   if m.title=="spirit_shaman" and not used.shaman and #friendly_squadrons_within(m,2)>0 then add(btns,{"shaman","Spirit Shaman"}) end
-   if has(m,"defense_claw") and not used.claw and #enemy_squadrons_within(m,2)>0 then add(btns,{"claw","Defense Claw"}) end
-   if has(m,"event_horizon") and not used.horizon and #ships_within(m,12)>0 then add(btns,{"horizon","Event Horizon"}) end
-   if has(m,"wrath_spines") and not used.wrath then add(btns,{"wrath","Wrath Spines"}) end
    if m.title=="aggressive_recycler" and m.scrap>=2 and next(used) then add(btns,{"recycle","Recycle 2 scrap: reuse abilities"}) end
    if has(m,"nutrient_repo") and not used.nutrient and is_damaged(m) and #nutrient_targets(m)>0 then add(btns,{"nutrient","Nutrient Repo"}) end
    if has(m,"spore_vents") and not used.spores then add(btns,{"spores","Spore Vents"}) end
@@ -3564,7 +3626,7 @@ function player_aim(m,action)
  if action=="drift" or action=="drift_cruise" then
   local D=speed(m,action=="drift" and "move" or "cruise")
   local r=await{
-   prompt="Drift "..D.."\": click where to slide (sideways only), then the ship turns to face the mouse.",
+   prompt="Drift "..D.."\": click where to slide (sideways only); the ship turns to face the solar wind marker nearest the mouse.",
    buttons={{"cancel","Cancel"}},cancel=true,
    hover=aim(function(p) return plan_drift(m,D,p) end),
    click=function(p) return bt.preview end,
@@ -5459,7 +5521,7 @@ end
 -- a Detonation squadron that is overlapped or engaged blows up on target
 -- upgrades counted when comparing rams (Unbelievable Bulk +2)
 function ram_ups(m)
- return m.hull.ups+(has(m,"unbelievable_bulk") and 2 or 0)+(m.hull.rules.orc_crew and 1 or 0)+(m.hull.rules.orc_crew and 1 or 0)
+ return m.hull.ups+(has(m,"unbelievable_bulk") and 2 or 0)+(m.hull.rules.orc_crew and 1 or 0)
 end
 
 -- Possessive Eye: fires once per round at an enemy that grabs an objective
@@ -5649,45 +5711,6 @@ function destroy(m,how)
  for s in all(m.embarked) do if s.state=="embarked" then s.state="dead" end end
  if how~="destroyed" or not was_on then return end
  local foe=other(m.side)
- if m.sq and brood_ship(m) then return end
- if not m.sq then
-  bt.losses[m.side]=bt.losses[m.side] or {}
-  bt.losses[m.side][bt.round]=(bt.losses[m.side][bt.round] or 0)+1
- end
- local a,shot=bt.attacker,bt.attack_shot
- if shot and shot.cascade then blast_hits(m,4,2,0,"Cascade Resonator") end
- if shot and shot.toxin then blast_hits(m,4,2,2,"Toxin Battery") end
- if not m.sq then
-  if m.hull.rules.volatile then blast_hits(m,3,m.hull.ups,0,m.name.."'s explosion") end
-  last_gasp(m)
-  if m.hero=="warp_tunneler" then add(bt.warps,{x=m.x,y=m.y,side=m.side}) blog("  a warp marker remains",SIDE_COL[m.side]) end
-  if shot and a and a.side~=m.side and a.state=="table" then
-   for o in all(bt.models) do
-    if o.side==m.side and o.hero=="mistress_of_retaliation" and o.state~="dead" then
-     a.vengeance=(a.vengeance or 0)+1
-     blog("  "..a.name.." earns a vengeance token",SIDE_COL[m.side])
-     break
-    end
-   end
-  end
-  if a and a.side~=m.side and a.state=="table" and has(a,"matter_recombinator") then
-   local fixed=0
-   for r in all(roll_dice(m.hull.ups,4,a.name.."'s matter recombinator","to repair")) do if r>=4 then fixed+=1 end end
-   if fixed>0 then repair(a,fixed) blog("  "..a.name.." recombines "..fixed.." damage",SIDE_COL[a.side]) end
-  end
-  for o in all(on_table(m.side)) do
-   if has(o,"salvage_commune") and mdist(o,m)<=6 then
-    local fixed=0
-    for r in all(roll_dice(m.hull.ups,4,o.name.."'s salvage commune","to repair")) do if r>=4 then fixed+=1 end end
-    if fixed>0 then repair(o,fixed) blog("  "..o.name.." salvages "..fixed.." damage",SIDE_COL[o.side]) end
-   end
-  end
-  for o in all(on_table(foe)) do
-   if o.hero=="heart_eater" and mdist(o,m)<=18 and is_damaged(o) then
-    repair(o,1) blog("  "..o.name.." devours the wreck (Heart Eater)",SIDE_COL[o.side])
-   end
-  end
- end
  if m.sq and brood_ship(m) then return end
  if not m.sq then
   bt.losses[m.side]=bt.losses[m.side] or {}
@@ -5979,7 +6002,7 @@ end
 
 function can_ram(m)
  local r=m.hull.rules
- return not m.sq or r.burrow or r.pyre or r.crawl or r.boarding_robot or r.invade or r.suicide or r.invade or r.suicide
+ return not m.sq or r.burrow or r.pyre or r.crawl or r.boarding_robot or r.invade or r.suicide
 end
 
 function find_ram(m,t)
@@ -6760,6 +6783,13 @@ function draw_board(b)
  end
 
  for r in all(b.rifts) do circ(px(r.x),py(r.y),4*S,r.side=="p" and 1 or 2) circfill(px(r.x),py(r.y),2,13) end
+ -- solar wind markers, greyed out while a False Sun outshines them
+ local eclipsed=#(b.suns or {})>0
+ for w in all(b.winds or {}) do
+  local x,y=px(w.x),py(w.y)
+  circfill(x,y,2,eclipsed and 5 or 10) circ(x,y,4,eclipsed and 5 or 9)
+ end
+ for s in all(b.suns or {}) do circ(px(s.x),py(s.y),2*S,10) end
  for sp in all(b.spores) do
   local x,y=px(sp.x),py(sp.y)
   circ(x,y,2*S,3)
@@ -7386,7 +7416,7 @@ function fbr_entries(fac,tab)
    if not u.weapon then return {name=u.name,text={u.desc}} end
    local kws=kw_list(fac,u.rules)
    local text={}
-   if u.desc~="No special rules." or #kws==0 then add(text,u.desc) end
+   if not u.auto_desc or #kws==0 then add(text,u.desc) end
    return {name=u.name,right=weapon_stats(u),text=text,kws=kws}
   end)
  elseif name=="Heroes" or name=="Titles" then
@@ -7552,13 +7582,19 @@ function def_faction(f)
  f.upgrades=with_core(f.upgrades,CORE_UPGRADES)
  f.heroes=with_core(f.heroes,CORE_HEROES)
  f.titles=with_core(f.titles,CORE_TITLES)
+ f.keywords=f.keywords or {}
  for u in all(f.upgrades) do
   u.rules=u.rules or {}
   if u.rules.broadside then u.facings={"sides"} end
   if u.rules.figurehead or u.rules.spinal then u.facings={"front"} end
   if u.rules.tail then u.facings={"rear"} end
+  -- weapons with no written rules text describe their keywords instead
+  if u.weapon and u.desc=="No special rules." and next(u.rules) then
+   local s=""
+   for k in all(kw_list(f,u.rules)) do s..=(s=="" and "" or " ")..k.name..": "..k.desc end
+   u.desc,u.auto_desc=s,true
+  end
  end
- f.keywords=f.keywords or {}
  FACTIONS[f.id]=f
  add(FACTION_ORDER,f)
  return f
@@ -8694,7 +8730,8 @@ function rec_world()
   for o in all(list) do add(out,{x=r2(o.x),y=r2(o.y),side=o.side}) end
   return out
  end
- local w={objs=pts(bt.objs),mines=pts(bt.mines),rifts=pts(bt.rifts),spores=pts(bt.spores),bile=""}
+ local w={objs=pts(bt.objs),mines=pts(bt.mines),rifts=pts(bt.rifts),spores=pts(bt.spores),
+  winds=pts(bt.winds),suns=pts(bt.suns),bile=""}
  for t in all(bt.terrain) do w.bile..=t.bile=="p" and "p" or t.bile and "a" or "-" end
  return w
 end
@@ -9031,7 +9068,7 @@ function rp_draw_view()
   t.bile=c=="p" and "p" or c=="a" and "ai" or nil
  end
  draw_board{stars=rp.stars,zdots=rp.zdots,terrain=r.terrain,
-  mines=w.mines,rifts=w.rifts,spores=w.spores,objs=w.objs}
+  mines=w.mines,rifts=w.rifts,spores=w.spores,objs=w.objs,winds=w.winds,suns=w.suns}
  for id=1,#r.models do
   local m=fr.m[id]
   if m and m.state=="table" then draw_model(rp_drawn(id,m)) end
