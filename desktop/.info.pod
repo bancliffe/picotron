@@ -1,0 +1,1 @@
+--[[pod,file_item={["drive.loc"]={x=-18,y=19},host={x=-21,y=106},["miyoo.loc"]={x=-20,y=149},["readme.txt"]={x=-21,y=66}},modified="2026-10-27 13:27:03"]]
