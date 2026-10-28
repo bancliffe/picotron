@@ -261,7 +261,6 @@ def_faction{
 :: factions/core.lua
 --[[pod_format="raw",created="2026-10-26 15:00:00",modified="2026-10-26 15:00:00",revision=0]]
 -- core rules ships, heroes, titles and upgrades (GFWF core rules v2.2.0).
--- template factions use these until they get their own lists.
 
 CORE_SHIPS={
  {id="cruiser",  name="Cruiser",  class="Heavy",   ups=4,pts=80,mv=4, cr=6, rng=24,att=2,str=2,eva=2,tou=2},
@@ -7444,7 +7443,7 @@ function fbr_build()
   x=0,y=0,width=430,height=20,
   draw=function(self)
    print("FACTION BROWSER",6,6,7)
-   print(fac.name..(fac.template and "  (template: core rules lists)" or ""),96,6,fac.template and 5 or 12)
+   print(fac.name,96,6,12)
   end
  }
  fb_button(gui,440,4,36,"Back",function() set_scene(menu_scene) end)
@@ -7461,7 +7460,7 @@ function fbr_build()
     local sel=i==fbr.fi
     if sel then rectfill(0,0,self.width-1,self.height-1,1) rectfill(0,0,1,self.height-1,8)
     elseif fb_hot(self) then rectfill(0,0,self.width-1,self.height-1,1) end
-    print(f.name..(f.template and " *" or ""),5,3,sel and 7 or f.template and 5 or 6)
+    print(f.name,5,3,sel and 7 or 6)
    end,
    tap=function() fbr.fi=i fbr.rebuild=true end
   }
@@ -7655,13 +7654,6 @@ function with_core(own,core)
  return out
 end
 
--- a faction that uses the core rules ships and upgrades until it gets its own
-function def_template_faction(id,name)
- return def_faction{
-  id=id,name=name,template=true,
-  ships=CORE_SHIPS,heroes=CORE_HEROES,titles=CORE_TITLES,upgrades=CORE_UPGRADES,
- }
-end
 
 function faction_of(fleet) return FACTIONS[fleet.faction] or FACTIONS[DEFAULT_FACTION] end
 function hull_of(fac,kind) return fac.ship_ids[kind] end
@@ -8042,6 +8034,13 @@ function cur_fleet() return fleets[fb.fi] end
 
 function fleet_scene.enter()
  if not fleets then load_fleets() end
+ -- fleets left with no units don't count, so with nothing built we start at
+ -- the faction picker rather than an empty roster
+ local n=#fleets
+ for i=n,1,-1 do
+  if #fleets[i].units==0 then deli(fleets,i) end
+ end
+ if #fleets<n then save_fleets() end
  fb.fi=mid(1,fb.fi,max(1,#fleets))
  fb.choosing=false
  fb_build()
@@ -8231,7 +8230,7 @@ function fb_build_faction_picker()
  local x0,y0=(480-cols*bw-8)\2,44
  for i,fac in ipairs(FACTION_ORDER) do
   local c,r=(i-1)\rows,(i-1)%rows
-  local b=fb_button(gui,x0+c*(bw+8),y0+r*(bh+1),bw,fac.name..(fac.template and " *" or ""),function()
+  local b=fb_button(gui,x0+c*(bw+8),y0+r*(bh+1),bw,fac.name,function()
    local nf=new_fleet(#fleets+1,fac.id)
    nf.name=unique_fleet_name(nf)
    add(fleets,nf)
@@ -8239,12 +8238,6 @@ function fb_build_faction_picker()
    fb_change()
   end)
  end
- gui:attach{
-  x=0,y=y0+rows*(bh+1)+4,width=480,height=10,
-  draw=function(self)
-   print_centered("* template: uses the core rules ships and upgrades for now",240,0,5)
-  end
- }
  if #fleets>0 then
   fb_button(gui,196,250,40,"Cancel",function() fb.choosing=false fb.rebuild=true end)
  else
